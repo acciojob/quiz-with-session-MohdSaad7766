@@ -63,12 +63,12 @@ function renderQuestions() {
       radio.name = `question-${i}`;
       radio.value = choice;
 
-      // Restore checked state from sessionStorage
+      // ✅ Restore checked state using .checked, not setAttribute
       if (userAnswers[i] === choice) {
         radio.checked = true;
       }
 
-      // Save progress to sessionStorage
+      // ✅ Save progress on change
       radio.addEventListener("change", () => {
         userAnswers[i] = choice;
         sessionStorage.setItem("progress", JSON.stringify(userAnswers));
