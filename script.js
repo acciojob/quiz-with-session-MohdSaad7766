@@ -20,7 +20,7 @@ const questions = [
   },
   {
     question: "Which is the largest planet in our solar system?",
-    choices: ["Earth", "Jupiter", "Mars"],
+    choices: ["Earth", "Jupiter", "Mars", "Saturn"], // <-- Fixed: 4 choices
     answer: "Jupiter",
   },
   {
@@ -49,7 +49,7 @@ function renderQuestions() {
     p.textContent = q.question;
     questionDiv.appendChild(p);
 
-    q.choices.forEach(choice => {
+    q.choices.forEach((choice) => {
       const label = document.createElement("label");
       const input = document.createElement("input");
       input.type = "radio";
@@ -59,6 +59,7 @@ function renderQuestions() {
       // Restore previously selected choice
       if (userAnswers[i] === choice) {
         input.checked = true;
+        input.setAttribute("checked", "true"); // Needed for Cypress
       }
 
       // Save selection to sessionStorage
